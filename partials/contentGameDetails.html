@@ -1,0 +1,55 @@
+<div class="main col-sm-12 col-md-9 col-md-offset-3 col-lg-9 col-lg-offset-3">
+    <div class="row game-detail-name">
+        <div class="col-sm-6 col-md-6 col-lg-6">
+            <h2 class="page-heading">{{game.name}}</h2>
+            <rating class="game-rating" ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" ng-click="rateNow()" ></rating>
+            <span class="label" ng-class="{'label-danger': percent<3, 'label-warning': percent>=3 && percent<4, 'label-success': percent>=4}" ng-show="overStar && !isReadonly" >{{percent | ratingFilter}}</span>
+        </div><!-- end {{game.name}} div -->
+        <div class="col-sm-6 col-md-6 col-lg-6 add-to-library" ng-show="logged">
+            <button class="btn btn-sm btn-default" ng-click="addToLibrary(game.id, game.name, game.image, 0)" ng-hide="inLibrary">Add to my Library</button>
+            <p class="alert alert-success" ng-show="justAdded"><span class="glyphicon glyphicon-ok"></span> Game Added to Your Library</p>
+            <p class="alert alert-success" ng-show="already"><span class="glyphicon glyphicon-ok"></span> Game in Library</p>
+            <button class="btn btn-sm btn-default" ng-show="inLibrary" ng-click="removeFromLibrary(game.id)">Remove from Library</button>
+        </div><!-- end .addToLibrary -->
+    </div><!-- end .row .game-detail-name -->
+
+    <div class="row game-detail-info">
+        <div class="col-sm-12 col-md-2 col-lg-2 game-detail-img">
+            <img src="./img/thumb_{{game.image}}" class="img-responsive" />
+        </div><!-- end .game-img -->
+        <div class="col-sm-12 col-md-10 col-lg-10 game-details">
+            <div class="game-detail-list col-sm-12 col-md-3 col-lg-3">
+                <h3 class="game-detail-heading">Type</h3>
+                <div class="game-details-list" ng-repeat="attribute in game.attributes | filter:{type: 'type'}">
+                    {{attribute.name}}
+                </div>
+            </div><!-- end .game-detail-list -->
+            <div class="game-detail-list col-sm-12 col-md-3 col-lg-3">
+                <h3 class="game-detail-heading">Category</h3>
+                <div class="game-details-list" ng-repeat="attribute in game.attributes | filter:{type: 'category'}">
+                    {{attribute.name}}
+                </div>
+            </div><!-- end .game-detail-list -->
+            <div class="game-detail-list col-sm-12 col-md-3 col-lg-3">
+                <h3 class="game-detail-heading">Mechanics</h3>
+                <div class="game-details-list" ng-repeat="attribute in game.attributes | filter:{type: 'mechanics'}">
+                    {{attribute.name}}
+                </div>
+            </div><!-- end .game-detail-list -->
+            <div class="game-detail-list col-sm-12 col-md-3 col-lg-3">
+                <h3 class="game-detail-heading">Theme</h3>
+                <div class="game-details-list" ng-repeat="attribute in game.attributes | filter:{type: 'theme'}">
+                    {{attribute.name}}
+                </div><!-- end .game-detail-list -->
+            </div><!-- end .game-details -->
+        </div><!-- end .row .game-info -->
+
+        <div class="col-sm-12 col-md-12 col-lg 12 game-description">
+            <h3>How to play</h3>
+            <p>Each player starts the game with six random cards. Players then take turns being the storyteller. The player whose turn it is to be storyteller looks at the six images in his or her hand. From one of these, he or she makes up a sentence or phrase that might describe it and says it out loud (without showing the card to the other players).</p>
+
+                <p>Each other player then selects from among their own six cards the one that best matches the sentence given by the storyteller. Then, each player gives their selected card to the storyteller, without showing it to the others. The storyteller shuffles his or her chosen card with the cards received from the other players, and all cards are then dealt face up. The players (except for the storyteller) then secretly guess which picture was the storyteller's, using numbered voting chips.</p>
+
+               <p> If nobody or everybody finds the correct picture, the storyteller scores 0, and each of the other players scores 2. Otherwise the storyteller and all players who found the correct answer score 3. Players other than the storyteller score 1 point for each vote their own pictures receive.</p>
+            </div>
+</div><!-- end .main -->

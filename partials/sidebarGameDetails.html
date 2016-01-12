@@ -1,0 +1,35 @@
+<div id="sidebar-game-details" class="col-sm-12 col-md-3 col-lg-3 sidebar">
+	<div id="detail-{{game.id}}"class="sidebar-filter sidebar-game-cover">
+		<h3 class="sidebar-game-cover-heading">{{game.name}}</h3>
+	</div><!-- end .game-cover -->
+	<div class="sidebar-filter">
+		<h3 class="sidebar-heading">Number of players <span class="game-sidebar-icon glyphicon glyphicon-user"></span></h3>
+		<div class="game-sidebar-list">
+			{{game.min_players}}-{{game.max_players}}
+		</div>
+	</div><!-- end .sidebar-filter -->
+	<div class="sidebar-filter">
+		<h3 class="sidebar-heading">Minimum age <span class="game-sidebar-icon glyphicon glyphicon-glass"></span></h3>
+		<div class="game-sidebar-list">
+			{{game.min_age}}
+		</div>
+	</div><!-- end .sidebar-filter -->
+	<div class="sidebar-filter">
+		<h3 class="sidebar-heading">Setup time <span class="game-sidebar-icon glyphicon glyphicon-wrench"></span></h3>
+		<div class="game-sidebar-list">
+			{{game.preparation_time | timeFilter}}
+		</div>
+	</div><!-- end .sidebar-filter -->
+	<div class="sidebar-filter">
+		<h3 class="sidebar-heading">Play time <span class="game-sidebar-icon glyphicon glyphicon-time"></span></h3>
+		<div class="game-sidebar-list">
+			{{game.duration | timeFilter}}
+		</div>
+	</div><!-- end .sidebar-filter -->
+	<div class="sidebar-filter">
+		<h3 class="sidebar-heading">Complexity <span class="game-sidebar-icon glyphicon glyphicon-stats"></span></h3>
+		<div class="game-sidebar-list">
+			{{game.complexity | complexityFilter}}
+		</div>
+	</div><!-- end .sidebar-filter -->
+</div><!-- end #sidebar-game-detail -->
